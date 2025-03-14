@@ -1,0 +1,48 @@
+fish:
+  enabled: true
+  money: 0.6-1.5
+  chance: 100
+  worlds:
+  - ALL
+  fishes:
+  - FISH
+cod:
+  enabled: true
+  money: 0.6-1.5
+  chance: 100
+  worlds:
+  - ALL
+  fishes:
+  - COD
+salmon:
+  enabled: true
+  money: 0.6-1.5
+  chance: 100
+  worlds:
+  - ALL
+  fishes:
+  - SALMON
+pufferfish:
+  enabled: true
+  money: 0.6-1.5
+  chance: 100
+  worlds:
+  - ALL
+  fishes:
+  - PUFFERFISH
+tropical_fish:
+  enabled: true
+  money: 0.6-1.5
+  chance: 100
+  worlds:
+  - ALL
+  fishes:
+  - TROPICAL_FISH
+enchanted_book:
+  enabled: true
+  money: 0.6-1.5
+  chance: 100
+  worlds:
+  - ALL
+  fishes:
+  - ENCHANTED_BOOK

@@ -1,0 +1,1062 @@
+player:
+  enabled: true
+  entities:
+    - PLAYER
+  money: 5%
+  chance: 100
+  only_if_killer_is_a_player: true
+  natural_death:
+    enable: true
+    percentage_of_money: 35
+  worlds:
+    - world
+player_world_nether:
+  enabled: true
+  entities:
+    - PLAYER
+  money: 6%
+  drops_count: '1'
+  chance: 80
+  only_if_killer_is_a_player: false
+  natural_death:
+    enable: true
+    percentage_of_money: 35
+  worlds:
+    - world_nether
+player_world_the_end:
+  enabled: true
+  entities:
+    - PLAYER
+  money: 7%
+  drops_count: '1'
+  chance: 100
+  only_if_killer_is_a_player: false
+  natural_death:
+    enable: true
+    percentage_of_money: 35
+  worlds:
+    - world_the_end
+iron_golem:
+  enabled: true
+  entities:
+  - IRON_GOLEM
+  money: 25-50
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+pig:
+  enabled: true
+  entities:
+  - PIG
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+stray:
+  enabled: true
+  entities:
+  - STRAY
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+zombie:
+  enabled: true
+  entities:
+  - ZOMBIE
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 20
+      money_percent: 50
+    two:
+      counter: 25
+      money_percent: 40
+    three:
+      counter: 30
+      money_percent: 30
+    four:
+      counter: 35
+      money_percent: 15
+    five:
+      counter: 40
+      money_percent: 5
+  worlds:
+  - world
+blaze:
+  enabled: true
+  entities:
+  - BLAZE
+  money: 10-15
+  drops_count: '1'
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 10
+      money_percent: 50
+    two:
+      counter: 15
+      money_percent: 40
+    three:
+      counter: 20
+      money_percent: 30
+    four:
+      counter: 30
+      money_percent: 15
+    five:
+      counter: 35
+      money_percent: 5
+  worlds:
+  - world
+  - world_nether
+pufferfish:
+  enabled: true
+  entities:
+  - PUFFERFISH
+  money: 0.1-1
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+wolf:
+  enabled: true
+  entities:
+  - WOLF
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+silverfish:
+  enabled: true
+  entities:
+  - SILVERFISH
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 4
+      money_percent: 50
+    two:
+      counter: 10
+      money_percent: 40
+    three:
+      counter: 20
+      money_percent: 30
+    four:
+      counter: 30
+      money_percent: 15
+    five:
+      counter: 35
+      money_percent: 5
+  worlds:
+  - world
+guardian:
+  enabled: true
+  entities:
+  - GUARDIAN
+  money: 10-25
+  drops_count: '1'
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 20
+      money_percent: 50
+    two:
+      counter: 30
+      money_percent: 40
+    three:
+      counter: 50
+      money_percent: 30
+    four:
+      counter: 60
+      money_percent: 15
+    five:
+      counter: 70
+      money_percent: 5
+  worlds:
+  - world
+husk:
+  enabled: true
+  entities:
+  - HUSK
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+bat:
+  enabled: true
+  entities:
+  - BAT
+  money: 0.1-1
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+drowned:
+  enabled: true
+  entities:
+  - DROWNED
+  money: 2-6
+  drops_count: '1'
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 20
+      money_percent: 70
+    two:
+      counter: 40
+      money_percent: 65
+    three:
+      counter: 60
+      money_percent: 50
+    four:
+      counter: 80
+      money_percent: 45
+    five:
+      counter: 120
+      money_percent: 20
+    six:
+      counter: 180
+      money_percent: 10
+  worlds:
+  - world
+creeper:
+  enabled: true
+  entities:
+  - CREEPER
+  money: 10-15
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+turtle:
+  enabled: true
+  entities:
+  - TURTLE
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+zombie_villager:
+  enabled: true
+  entities:
+  - ZOMBIE_VILLAGER
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+shulker:
+  enabled: true
+  entities:
+  - SHULKER
+  money: 15-20
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+witch:
+  enabled: true
+  entities:
+  - WITCH
+  money: 15-20
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+mule:
+  enabled: true
+  entities:
+  - MULE
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+cow:
+  enabled: true
+  entities:
+  - COW
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+ender_dragon:
+  enabled: true
+  entities:
+  - ENDER_DRAGON
+  money: 100-250
+  drops_count: '5'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+sheep:
+  enabled: true
+  entities:
+  - SHEEP
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+rabbit:
+  enabled: true
+  entities:
+  - RABBIT
+  money: 0.5-1.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+evoker:
+  enabled: true
+  entities:
+  - EVOKER
+  money: 50-100
+  drops_count: '2'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+llama:
+  enabled: true
+  entities:
+  - LLAMA
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+pillager:
+  enabled: true
+  entities:
+  - PILLAGER
+  money: 7-15
+  drops_count: '1'
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 20
+      money_percent: 50
+    two:
+      counter: 30
+      money_percent: 45
+    three:
+      counter: 35
+      money_percent: 20
+  worlds:
+  - world
+villager:
+  enabled: true
+  entities:
+  - VILLAGER
+  money: 25-50
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+mushroom_cow:
+  enabled: true
+  entities:
+  - MUSHROOM_COW
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+endermite:
+  enabled: true
+  entities:
+  - ENDERMITE
+  money: 10-20
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_nether
+horse:
+  enabled: true
+  entities:
+  - HORSE
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+ocelot:
+  enabled: true
+  entities:
+  - OCELOT
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+skeleton:
+  enabled: true
+  entities:
+  - SKELETON
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 10
+      money_percent: 70
+    two:
+      counter: 15
+      money_percent: 60
+    three:
+      counter: 20
+      money_percent: 50
+    four:
+      counter: 30
+      money_percent: 25
+    five:
+      counter: 35
+      money_percent: 5
+  worlds:
+  - world
+salmon:
+  enabled: true
+  entities:
+  - SALMON
+  money: 0.1-1
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+donkey:
+  enabled: true
+  entities:
+  - DONKEY
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+polar_bear:
+  enabled: true
+  entities:
+  - POLAR_BEAR
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+illusioner:
+  enabled: true
+  entities:
+  - ILLUSIONER
+  money: 25-50
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+skeleton_horse:
+  enabled: true
+  entities:
+  - SKELETON_HORSE
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+cod:
+  enabled: true
+  entities:
+  - COD
+  money: 0.1-1
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+ghast:
+  enabled: true
+  entities:
+  - GHAST
+  money: 20-25
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+vex:
+  enabled: true
+  entities:
+  - VEX
+  money: 10-20
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+vindicator:
+  enabled: true
+  entities:
+  - VINDICATOR
+  money: 15-20
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+chicken:
+  enabled: true
+  entities:
+  - CHICKEN
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+ravager:
+  enabled: true
+  entities:
+  - RAVAGER
+  money: 50-70
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+snowman:
+  enabled: true
+  entities:
+  - SNOWMAN
+  money: 0.5-1.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+zombie_horse:
+  enabled: true
+  entities:
+  - ZOMBIE_HORSE
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+spider:
+  enabled: true
+  entities:
+  - SPIDER
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 20
+      money_percent: 70
+    two:
+      counter: 40
+      money_percent: 65
+    three:
+      counter: 60
+      money_percent: 50
+    four:
+      counter: 80
+      money_percent: 45
+    five:
+      counter: 120
+      money_percent: 20
+    six:
+      counter: 180
+      money_percent: 10
+  worlds:
+  - world
+wither:
+  enabled: true
+  entities:
+  - WITHER
+  money: 100-250
+  drops_count: '5'
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 2
+      money_percent: 5
+    two:
+      counter: 3
+      money_percent: 1
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+cave_spider:
+  enabled: true
+  entities:
+  - CAVE_SPIDER
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 20
+      money_percent: 70
+    two:
+      counter: 40
+      money_percent: 65
+    three:
+      counter: 60
+      money_percent: 50
+    four:
+      counter: 80
+      money_percent: 45
+    five:
+      counter: 120
+      money_percent: 20
+    six:
+      counter: 180
+      money_percent: 10
+  worlds:
+  - world
+slime:
+  enabled: true
+  entities:
+  - SLIME
+  money: 3-7
+  drops_count: '1'
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 5
+      money_percent: 50
+    two:
+      counter: 10
+      money_percent: 40
+    three:
+      counter: 15
+      money_percent: 30
+    four:
+      counter: 20
+      money_percent: 15
+    five:
+      counter: 40
+      money_percent: 5
+  worlds:
+  - world
+enderman:
+  enabled: true
+  entities:
+  - ENDERMAN
+  money: 3-7
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_nether
+giant:
+  enabled: true
+  entities:
+  - GIANT
+  money: 100-250
+  drops_count: '5'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+phantom:
+  enabled: true
+  entities:
+  - PHANTOM
+  money: 15-20
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+dolphin:
+  enabled: true
+  entities:
+  - DOLPHIN
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+elder_guardian:
+  enabled: true
+  entities:
+  - ELDER_GUARDIAN
+  money: 100-250
+  drops_count: '2'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+squid:
+  enabled: true
+  entities:
+  - SQUID
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+parrot:
+  enabled: true
+  entities:
+  - PARROT
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+tropical_fish:
+  enabled: true
+  entities:
+  - TROPICAL_FISH
+  money: 0.1-1
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+  - world_nether
+magma_cube:
+  enabled: true
+  entities:
+  - MAGMA_CUBE
+  money: 10-15
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world
+  - world_the_end
+zombie_world_the_end:
+  enabled: true
+  entities:
+  - ZOMBIE
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_the_end
+blaze_world_the_end:
+  enabled: true
+  entities:
+  - BLAZE
+  money: 10-15
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_the_end
+silverfish_world_the_end:
+  enabled: true
+  entities:
+  - SILVERFISH
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world_the_end
+guardian_world_the_end:
+  enabled: true
+  entities:
+  - GUARDIAN
+  money: 3-7
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_the_end
+drowned_world_the_end:
+  enabled: true
+  entities:
+  - DROWNED
+  money: 2-6
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_the_end
+pillager_world_the_end:
+  enabled: true
+  entities:
+  - PILLAGER
+  money: 7-15
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_the_end
+endermite_world_the_end:
+  enabled: true
+  entities:
+  - ENDERMITE
+  money: 1-5
+  drops_count: 1-2
+  chance: 70
+  worlds:
+  - world_the_end
+skeleton_world_the_end:
+  enabled: true
+  entities:
+  - SKELETON
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_the_end
+spider_world_the_end:
+  enabled: true
+  entities:
+  - SPIDER
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_the_end
+cave_spider_world_the_end:
+  enabled: true
+  entities:
+  - CAVE_SPIDER
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world_the_end
+slime_world_the_end:
+  enabled: true
+  entities:
+  - SLIME
+  money: 3-7
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_the_end
+enderman_world_the_end:
+  enabled: true
+  entities:
+  - ENDERMAN
+  money: 0.5-5
+  drops_count: '1'
+  chance: 50
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 20
+      money_percent: 70
+    two:
+      counter: 40
+      money_percent: 65
+    three:
+      counter: 60
+      money_percent: 50
+    four:
+      counter: 80
+      money_percent: 45
+    five:
+      counter: 120
+      money_percent: 20
+    six:
+      counter: 180
+      money_percent: 10
+  worlds:
+  - world_the_end
+zombie_world_nether:
+  enabled: true
+  entities:
+  - ZOMBIE
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_nether
+silverfish_world_nether:
+  enabled: true
+  entities:
+  - SILVERFISH
+  money: 1-2.5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world_nether
+guardian_world_nether:
+  enabled: true
+  entities:
+  - GUARDIAN
+  money: 3-7
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_nether
+drowned_world_nether:
+  enabled: true
+  entities:
+  - DROWNED
+  money: 2-6
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_nether
+pillager_world_nether:
+  enabled: true
+  entities:
+  - PILLAGER
+  money: 7-15
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_nether
+skeleton_world_nether:
+  enabled: true
+  entities:
+  - SKELETON
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_nether
+spider_world_nether:
+  enabled: true
+  entities:
+  - SPIDER
+  money: 5-10
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_nether
+cave_spider_world_nether:
+  enabled: true
+  entities:
+  - CAVE_SPIDER
+  money: 2.5-5
+  drops_count: 1-2
+  chance: 100
+  worlds:
+  - world_nether
+slime_world_nether:
+  enabled: true
+  entities:
+  - SLIME
+  money: 3-7
+  drops_count: '1'
+  chance: 100
+  worlds:
+  - world_nether
+magma_cube_world_nether:
+  enabled: true
+  entities:
+  - MAGMA_CUBE
+  money: 10-15
+  drops_count: '1'
+  chance: 100
+  anti_farm:
+    reset_after_seconds: 1800
+    one:
+      counter: 5
+      money_percent: 70
+    two:
+      counter: 10
+      money_percent: 65
+    three:
+      counter: 20
+      money_percent: 50
+    four:
+      counter: 30
+      money_percent: 45
+    five:
+      counter: 35
+      money_percent: 20
+    six:
+      counter: 40
+      money_percent: 10
+  worlds:
+  - world_nether

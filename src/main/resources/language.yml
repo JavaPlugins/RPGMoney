@@ -1,0 +1,26 @@
+prefix: "[RPGMoney] "
+currency-format: "{money}$"
+no-enough-money: "&cYou don't have enough money"
+pickup: "&aYou have received &6{money}$"
+pickup_with_pickup_multiplier: "&aYou have received &6{money}$ &7(x{multiplier} bonus)"
+drop-message: "&cYou have dropped &6{money}$"
+reload: "&aConfigurations reloaded!"
+invalid-amount: "&cInvalid amount"
+sack-of-money: "&6&lSack of Money"
+money: "&6&lMoney"
+obtained: "&aObtained "
+no-permission: "&cYou don't have the permission!"
+get-money-from-sack-guide: "&3To get the money press F"
+reload-help: "&aReload - &3/rm reload"
+get-help: "&aGet money sack - &3/rm get <money amount>"
+commands: "&7Commands:"
+resourcepack-error: '&4An error occurred when enabling the resourcepack. Contact admins please!'
+resourcepack-success: '&2Resourcepack loaded correctly'
+resourcepack-loading: '&6Loading textures...'
+resourcepack-kick-declined: '&4You must accept the resourcepack!
+  Also make sure you set them to ''Prompt'' or ''Enabled'' in server properties.'
+lore-sack-of-money: '&6Sack Of Money'
+lore-money: '&6Money'
+lore-player-name: '&aPlayer: &b'
+lore-amount: '&aAmount: &6'
+disabled-item: '&cThis item is disabled. Please get a new one.'

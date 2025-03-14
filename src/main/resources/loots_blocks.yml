@@ -1,0 +1,112 @@
+crops:
+  enabled: true
+  money: 0.1-0.15
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - CROPS
+wheat:
+  enabled: true
+  money: 0.1-0.15
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - WHEAT
+potatoes:
+  enabled: true
+  money: 0.1-0.15
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - POTATOES
+carrots:
+  enabled: true
+  money: 0.1-0.15
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - CARROTS
+beetroots:
+  enabled: true
+  money: 0.1-0.3
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - BEETROOTS
+nether_wart:
+  enabled: true
+  money: 0.1-0.2
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - NETHER_WART
+melon:
+  enabled: true
+  money: 0.1-0.5
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - MELON
+pumpkin:
+  enabled: true
+  money: 0.1-0.5
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - PUMPKIN
+diamond_ore:
+  enabled: true
+  money: 1-5
+  chance: 100
+  worlds:
+  - ALL
+  blocks:
+  - DIAMOND_ORE
+emerald_ore:
+  enabled: true
+  money: 1-10
+  chance: 100
+  worlds:
+  - ALL
+  blocks:
+  - EMERALD_ORE
+coal_ore:
+  enabled: true
+  money: 0.6-1.5
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - COAL_ORE
+iron_ore:
+  enabled: true
+  money: 0.6-1.5
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - IRON_ORE
+gold_ore:
+  enabled: true
+  money: 0.9-1.9
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - GOLD_ORE
+lapis_ore:
+  enabled: true
+  money: 1.2-1.7
+  chance: 70
+  worlds:
+  - ALL
+  blocks:
+  - LAPIS_ORE
