@@ -12,7 +12,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
-import java.io.IOException;
 
 public class BlocksLootsRegistry extends AbstractLootsRegistry
 {
@@ -40,14 +39,14 @@ public class BlocksLootsRegistry extends AbstractLootsRegistry
                 if (lootData != null)
                 {
                     lootInstance.loot = get(world, customBlock.getNamespacedID());
-                    lootInstance.matchedId = customBlock.getNamespacedID();
+                    lootInstance.setMatchedId(customBlock.getNamespacedID());
                 }
             }
         }
         else
         {
             lootInstance.loot = get(world, Utils.blockId(block));
-            lootInstance.matchedId = Utils.blockId(block);
+            lootInstance.setMatchedId(Utils.blockId(block));
         }
 
         if(lootInstance.loot == null)

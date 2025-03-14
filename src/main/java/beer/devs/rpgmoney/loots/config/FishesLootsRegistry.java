@@ -12,7 +12,6 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
-import java.io.IOException;
 
 public class FishesLootsRegistry extends AbstractLootsRegistry
 {
@@ -40,14 +39,14 @@ public class FishesLootsRegistry extends AbstractLootsRegistry
                 if (lootData != null)
                 {
                     lootInstance.loot = get(world, customStack.getNamespacedID());
-                    lootInstance.matchedId = customStack.getNamespacedID();
+                    lootInstance.setMatchedId(customStack.getNamespacedID());
                 }
             }
         }
         else
         {
             lootInstance.loot = get(world, Utils.itemId(itemStack));
-            lootInstance.matchedId = Utils.itemId(itemStack);
+            lootInstance.setMatchedId(Utils.itemId(itemStack));
         }
 
         if(lootInstance.loot == null)

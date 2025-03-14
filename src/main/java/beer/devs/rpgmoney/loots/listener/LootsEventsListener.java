@@ -63,8 +63,8 @@ public class LootsEventsListener implements Listener
             return;
         if (!e.getOffHandItem().getItemMeta().hasLore())
             return;
-        if (!e.getOffHandItem().getItemMeta().getLore().contains(Main.inst.language.getColored("lore-sack-of-money")) &&
-                !e.getOffHandItem().getItemMeta().getLore().contains(Main.inst.language.getColored("lore-money")))
+        if (!e.getOffHandItem().getItemMeta().getLore().contains(Main.language.getColored("lore-sack-of-money")) &&
+                !e.getOffHandItem().getItemMeta().getLore().contains(Main.language.getColored("lore-money")))
             return;
         e.setCancelled(true);
         Player player = e.getPlayer();
@@ -77,10 +77,10 @@ public class LootsEventsListener implements Listener
         else
             amount = lore.get(2);
         amount = ChatColor.stripColor(amount);
-        amount = amount.replace(ChatColor.stripColor(Main.inst.language.getColored("lore-amount")), "");
+        amount = amount.replace(ChatColor.stripColor(Main.language.getColored("lore-amount")), "");
         Main.economy.depositPlayer(e.getPlayer(), Double.parseDouble(amount));
         if (Settings.SHOW_ACTIONBAR_MESSAGES)
-            player.sendActionBar(ChatColor.GREEN + Main.inst.language.getColored("pickup").replace("{money}", amount));
+            player.sendActionBar(ChatColor.GREEN + Main.language.getColored("pickup").replace("{money}", amount));
 
         Main.playPickupMoneySound(player);
         Utils.decrementAmountMainHand(player);
@@ -103,7 +103,7 @@ public class LootsEventsListener implements Listener
 
         Main.economy.depositPlayer(e.getPlayer(), money);
         if(Settings.SHOW_ACTIONBAR_MESSAGES)
-            player.sendActionBar(ChatColor.GREEN + Main.inst.language.getColored("pickup").replace("{money}", money + ""));
+            player.sendActionBar(ChatColor.GREEN + Main.language.getColored("pickup").replace("{money}", money + ""));
 
         Main.playPickupMoneySound(player);
         Utils.decrementAmountMainHand(player);
@@ -121,8 +121,8 @@ public class LootsEventsListener implements Listener
             return;
         if (!e.getItem().getItemMeta().hasLore())
             return;
-        if (!e.getItem().getItemMeta().getLore().contains(Main.inst.language.getColored("lore-sack-of-money")) &&
-                !e.getItem().getItemMeta().getLore().contains(Main.inst.language.getColored("lore-money")))
+        if (!e.getItem().getItemMeta().getLore().contains(Main.language.getColored("lore-sack-of-money")) &&
+                !e.getItem().getItemMeta().getLore().contains(Main.language.getColored("lore-money")))
             return;
 
         if (!Main.config.getBoolean("get_money_method.right_click"))
@@ -134,7 +134,7 @@ public class LootsEventsListener implements Listener
         if (!Main.inst.hasCurrentCashID(e.getItem()))
         {
             if (Settings.SHOW_ACTIONBAR_MESSAGES)
-                player.sendActionBar(ChatColor.RED + Main.inst.language.getColored("disabled-item"));
+                player.sendActionBar(ChatColor.RED + Main.language.getColored("disabled-item"));
             return;
         }
 
@@ -146,10 +146,10 @@ public class LootsEventsListener implements Listener
         else
             amount = lore.get(2);
         amount = ChatColor.stripColor(amount);
-        amount = amount.replace(ChatColor.stripColor(Main.inst.language.getColored("lore-amount")), "");
+        amount = amount.replace(ChatColor.stripColor(Main.language.getColored("lore-amount")), "");
         Main.economy.depositPlayer(e.getPlayer(), Double.parseDouble(amount));
         if(Settings.SHOW_ACTIONBAR_MESSAGES)
-            player.sendActionBar(ChatColor.GREEN + Main.inst.language.getColored("pickup").replace("{money}", amount));
+            player.sendActionBar(ChatColor.GREEN + Main.language.getColored("pickup").replace("{money}", amount));
 
         Main.playPickupMoneySound(player);
 
@@ -180,13 +180,13 @@ public class LootsEventsListener implements Listener
         if (!Main.inst.hasCurrentCashID(e.getItem()))
         {
             if (Settings.SHOW_ACTIONBAR_MESSAGES)
-                player.sendActionBar(ChatColor.RED + Main.inst.language.getColored("disabled-item"));
+                player.sendActionBar(ChatColor.RED + Main.language.getColored("disabled-item"));
             return;
         }
 
         Main.inst.economy.depositPlayer(e.getPlayer(), money);
         if (Settings.SHOW_ACTIONBAR_MESSAGES)
-            player.sendActionBar(ChatColor.GREEN + Main.inst.language.getColored("pickup").replace("{money}", money + ""));
+            player.sendActionBar(ChatColor.GREEN + Main.language.getColored("pickup").replace("{money}", money + ""));
 
         Main.playPickupMoneySound(player);
 
@@ -245,20 +245,19 @@ public class LootsEventsListener implements Listener
 
             if (modifier > 0)
             {
-                if (killedEntity instanceof Player)
+                if (killedEntity instanceof Player killedPlayer)
                 {
-                    Player killedPlayer = (Player) killedEntity;
                     int dropsAmount = lootInstance.loot.randomAmount();
                     for (int i = 0; i < dropsAmount; i++)
                     {
-                        float money = lootInstance.calculateMoneyFromKilledEntity((Player) killedEntity);
+                        float money = lootInstance.calculateMoneyFromKilledEntity(killedPlayer);
                         money = Utils.takePercentage(money, modifier);
 
-                        if (money > 0 && Main.inst.takeMoneyFromPlayer(money, killedPlayer))
+                        if (money > 0 && Main.takeMoneyFromPlayer(money, killedPlayer))
                         {
                             if (Settings.SHOW_ACTIONBAR_MESSAGES)
-                                killedPlayer.sendActionBar(ChatColor.RED + Main.inst.language.getColored("drop-message").replace("{money}", String.valueOf(money)));
-                            Main.inst.spawnMoney(money, killedEntity.getLocation());
+                                killedPlayer.sendActionBar(ChatColor.RED + Main.language.getColored("drop-message").replace("{money}", String.valueOf(money)));
+                            Main.spawnMoney(money, killedEntity.getLocation());
                         }
                     }
 
@@ -271,7 +270,7 @@ public class LootsEventsListener implements Listener
                     for (int i = 0; i < dropsAmount; i++)
                     {
                         float money = Utils.takePercentage(lootInstance.calculateMoney(), modifier);
-                        Main.inst.spawnMoney(money, killedEntity.getLocation());
+                        Main.spawnMoney(money, killedEntity.getLocation());
                     }
 
                     if(dropsAmount > 0)
@@ -287,15 +286,14 @@ public class LootsEventsListener implements Listener
             if (killer instanceof Player && !killer.hasPermission("rpgmoney.drop.kill"))
                 return;
 
-            if (killedEntity instanceof Player)
+            if (killedEntity instanceof Player killedPlayer)
             {
-                Player killedPlayer = (Player) killedEntity;
-                float money = lootInstance.calculateMoneyFromKilledEntity((Player) killedEntity);
-                if (money > 0 && Main.inst.takeMoneyFromPlayer(money, killedPlayer))
+                float money = lootInstance.calculateMoneyFromKilledEntity(killedPlayer);
+                if (money > 0 && Main.takeMoneyFromPlayer(money, killedPlayer))
                 {
                     if (Settings.SHOW_ACTIONBAR_MESSAGES)
-                        killedPlayer.sendActionBar(ChatColor.RED + Main.inst.language.getColored("drop-message").replace("{money}", String.valueOf(money)));
-                    Main.inst.spawnMoney(killer, money, killedEntity.getLocation());
+                        killedPlayer.sendActionBar(ChatColor.RED + Main.language.getColored("drop-message").replace("{money}", String.valueOf(money)));
+                    Main.spawnMoney(killer, money, killedEntity.getLocation());
                     lootInstance.increaseTracker();
                 }
             }
@@ -305,7 +303,7 @@ public class LootsEventsListener implements Listener
                 if(Main.config.getBoolean("spawners.enable"))
                 {
                     if (Main.inst.spawners.contains(killedEntity.getUniqueId()))
-                        perc = Main.inst.config.getInt("spawners.percentage_of_money");
+                        perc = Main.config.getInt("spawners.percentage_of_money");
                 }
 
                 if (perc > 0)
@@ -314,7 +312,7 @@ public class LootsEventsListener implements Listener
                     int dropsAmount = lootInstance.loot.randomAmount();
                     for (int i = 0; i < dropsAmount; i++)
                     {
-                        Main.inst.spawnMoney(killer, money, killedEntity.getLocation());
+                        Main.spawnMoney(killer, money, killedEntity.getLocation());
                     }
 
                     if(dropsAmount > 0)
@@ -359,7 +357,7 @@ public class LootsEventsListener implements Listener
             for (int i = 0; i < randomAmount; i++)
             {
                 float randomMoney = data.calculateMoney();
-                Main.inst.spawnMoney(player, randomMoney, block.getLocation());
+                Main.spawnMoney(player, randomMoney, block.getLocation());
             }
         }
     }
@@ -391,7 +389,7 @@ public class LootsEventsListener implements Listener
             int randomAmount = data.loot.randomAmount();
             for (int i = 0; i < randomAmount; i++)
             {
-                Entity item = Main.inst.spawnMoney(e.getPlayer(), data.calculateMoney(), caught.getLocation());
+                Entity item = Main.spawnMoney(e.getPlayer(), data.calculateMoney(), caught.getLocation());
                 if (item != null)
                     item.teleport(e.getPlayer().getLocation());
             }
@@ -433,8 +431,8 @@ public class LootsEventsListener implements Listener
         {
             if (!event.getPlayer().getItemInHand().hasItemMeta() || !event.getPlayer().getItemInHand().getItemMeta().hasLore())
                 return;
-            if (event.getPlayer().getItemInHand().getItemMeta().getLore().contains(Main.inst.language.getColored("lore-sack-of-money"))
-                    || event.getPlayer().getItemInHand().getItemMeta().getLore().contains(Main.inst.language.getColored("lore-money")))
+            if (event.getPlayer().getItemInHand().getItemMeta().getLore().contains(Main.language.getColored("lore-sack-of-money"))
+                    || event.getPlayer().getItemInHand().getItemMeta().getLore().contains(Main.language.getColored("lore-money")))
                 event.setCancelled(true);
         }
     }

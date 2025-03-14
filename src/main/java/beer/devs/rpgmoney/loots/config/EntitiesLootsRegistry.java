@@ -11,7 +11,6 @@ import org.bukkit.entity.Entity;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
-import java.io.IOException;
 
 public class EntitiesLootsRegistry extends AbstractLootsRegistry
 {
@@ -26,14 +25,14 @@ public class EntitiesLootsRegistry extends AbstractLootsRegistry
     }
 
     @Nullable
-    public LootInstance get(Entity player, Entity entity)
+    public LootInstance get(@Nullable Entity killer, Entity entity)
     {
         World world = entity.getWorld();
-        LootInstance lootInstance = new LootInstance(tracker, player);
+        LootInstance lootInstance = new LootInstance(tracker, killer);
         if(!Main.HAS_ITEMSADDER)
         {
             lootInstance.loot = get(world, Utils.entityId(entity));
-            lootInstance.matchedId = Utils.entityId(entity);
+            lootInstance.setMatchedId(Utils.entityId(entity));
             if(lootInstance.loot == null)
                 return null;
             return lootInstance;
@@ -43,7 +42,7 @@ public class EntitiesLootsRegistry extends AbstractLootsRegistry
         if(customEntity == null)
         {
             lootInstance.loot = get(world, Utils.entityId(entity));
-            lootInstance.matchedId = Utils.entityId(entity);
+            lootInstance.setMatchedId(Utils.entityId(entity));
             if(lootInstance.loot == null)
                 return null;
             return lootInstance;
@@ -53,12 +52,12 @@ public class EntitiesLootsRegistry extends AbstractLootsRegistry
         if (a == null)
         {
             lootInstance.loot = get(world, Utils.entityId(entity));
-            lootInstance.matchedId = Utils.entityId(entity);
+            lootInstance.setMatchedId(Utils.entityId(entity));
         }
         else
         {
             lootInstance.loot = get(world, customEntity.getNamespacedID());
-            lootInstance.matchedId = customEntity.getNamespacedID();
+            lootInstance.setMatchedId(customEntity.getNamespacedID());
         }
 
         if(lootInstance.loot == null)

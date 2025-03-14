@@ -6,6 +6,7 @@ import beer.devs.rpgmoney.loots.config.AbstractLootsRegistry;
 import beer.devs.rpgmoney.loots.config.NerfData;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
@@ -19,36 +20,36 @@ public abstract class AbstractActionTracker
         this.loots = loots;
     }
 
-    public ActionRecord get(Entity player, String prop)
+    public ActionRecord get(Entity killer, String prop)
     {
-        if (!data.containsKey(player.getUniqueId()))
-            return initHashmap(player, prop);
+        if (!data.containsKey(killer.getUniqueId()))
+            return initHashmap(killer, prop);
 
-        for (ActionRecord entry : data.get(player.getUniqueId()))
+        for (ActionRecord entry : data.get(killer.getUniqueId()))
         {
-            if (entry.action.equals(prop) && entry.worldName.equals(player.getWorld().getName()))
+            if (entry.action.equals(prop) && entry.worldName.equals(killer.getWorld().getName()))
                 return entry;
         }
-        return initKillsDataForEntity(player, prop);
+        return initKillsDataForEntity(killer, prop);
     }
 
-    private ActionRecord initHashmap(Entity player, String prop)
+    private ActionRecord initHashmap(Entity killer, String prop)
     {
-        ActionRecord actionRecord = new ActionRecord(player.getUniqueId(), 0, player.getWorld().getName(), prop);
-        data.put(player.getUniqueId(), new ArrayList<>(Collections.singletonList(actionRecord)));
+        ActionRecord actionRecord = new ActionRecord(killer.getUniqueId(), 0, killer.getWorld().getName(), prop);
+        data.put(killer.getUniqueId(), new ArrayList<>(Collections.singletonList(actionRecord)));
         return actionRecord;
     }
 
-    private ActionRecord initKillsDataForEntity(Entity player, String prop)
+    private ActionRecord initKillsDataForEntity(Entity killer, String prop)
     {
-        ActionRecord actionRecord = new ActionRecord(player.getUniqueId(), 0, player.getWorld().getName(), prop);
-        data.get(player.getUniqueId()).add(actionRecord);
+        ActionRecord actionRecord = new ActionRecord(killer.getUniqueId(), 0, killer.getWorld().getName(), prop);
+        data.get(killer.getUniqueId()).add(actionRecord);
         return actionRecord;
     }
 
-    public void increase(Entity player, String prop, LootData lootData)
+    public void increase(Entity killer, String prop, LootData lootData)
     {
-        ActionRecord actionRecord = get(player, prop);
+        ActionRecord actionRecord = get(killer, prop);
         actionRecord.count++;
 
         if (System.currentTimeMillis() >= actionRecord.ms + (lootData.antifarm.resetAfterSeconds * 1000L))
@@ -56,28 +57,28 @@ public abstract class AbstractActionTracker
         actionRecord.updateMs();
     }
 
-    public float getNerfedMoney(Entity player, String prop)
+    public float getNerfedMoney(@Nullable Entity killer, String prop)
     {
-        ActionRecord actionRecord = get(player, prop);
-        LootData lootData = loots.get(player.getWorld(), prop);
+        ActionRecord actionRecord = get(killer, prop);
+        LootData lootData = loots.get(killer.getWorld(), prop);
         NerfData nerfData = lootData.antifarm.getNerfData(actionRecord.count);
         return Utils.round(Utils.getRandom(lootData.money) * nerfData.getMoneyPercent() / 100, 2);
     }
 
-    public float getNerfedMoney(Entity player, LootData data, String prop)
+    public float getNerfedMoney(@Nullable Entity killer, LootData data, String prop)
     {
-        if(player == null)
+        if (killer == null)
             return Utils.getRandom(data.money);
-        ActionRecord actionRecord = get(player, prop);
+        ActionRecord actionRecord = get(killer, prop);
         NerfData nerfData = data.antifarm.getNerfData(actionRecord.count);
         return Utils.round(Utils.getRandom(data.money) * nerfData.getMoneyPercent() / 100, 2);
     }
 
-    public float nerfMoney(Player player, float money, LootData data, String prop)
+    public float nerfMoney(Player killer, float money, LootData data, String prop)
     {
-        if(player == null)
+        if (killer == null)
             return money;
-        ActionRecord actionRecord = get(player, prop);
+        ActionRecord actionRecord = get(killer, prop);
         NerfData nerfData = data.antifarm.getNerfData(actionRecord.count);
         return Utils.round(money * nerfData.getMoneyPercent() / 100, 2);
     }

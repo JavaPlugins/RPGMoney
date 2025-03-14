@@ -11,20 +11,20 @@ import org.jetbrains.annotations.Nullable;
 public class LootInstance
 {
     @Nullable
-    private final Entity player;
+    private final Entity killer;
     private final AbstractActionTracker tracker;
     public LootData loot;
-    public String matchedId;
+    private String matchedId;
 
-    public LootInstance(AbstractActionTracker tracker, @Nullable Entity player)
+    public LootInstance(AbstractActionTracker tracker, @Nullable Entity killer)
     {
         this.tracker = tracker;
-        this.player = player;
+        this.killer = killer;
     }
 
     public float calculateMoney()
     {
-        return tracker.getNerfedMoney(player, loot, matchedId);
+        return tracker.getNerfedMoney(killer, loot, matchedId);
     }
 
     public float calculateMoneyFromKilledEntity(Player killedPlayer)
@@ -43,6 +43,13 @@ public class LootInstance
 
     public void increaseTracker()
     {
-        tracker.increase(player, matchedId, loot);
+        if(killer == null)
+            return;
+        tracker.increase(killer, matchedId, loot);
+    }
+
+    public void setMatchedId(String matchedId)
+    {
+        this.matchedId = matchedId;
     }
 }
