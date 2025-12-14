@@ -172,6 +172,11 @@ public final class Main extends JavaPlugin implements Listener
         entitiesLootsRegistry = new EntitiesLootsRegistry(this);
         blocksLootsRegistry = new BlocksLootsRegistry(this);
         fishesLootsRegistry = new FishesLootsRegistry(this);
+		
+		onDisable();
+		permissions.clear();
+		multipliersDrops.clear();
+		multipliersPickup.clear();
 
         ConfigurationSection sec = config.getConfig().getConfigurationSection("multipliers_groups.drop");
         if (sec != null)
@@ -461,33 +466,40 @@ public final class Main extends JavaPlugin implements Listener
 
     private static float mergeNearMoney(Location location, float money)
     {
-        if (Settings.PICKUPS_MERGE)
+        if (!Settings.PICKUPS_MERGE)
+            return money;
+
+        Collection<Item> nearDrops = location.getWorld().getNearbyEntitiesByType(
+                Item.class,
+                location,
+                Settings.PICKUPS_MERGE_RADIUS,
+                Settings.PICKUPS_MERGE_RADIUS,
+                Settings.PICKUPS_MERGE_RADIUS
+        );
+
+        int count = 0;
+
+        for (Item drop : nearDrops)
         {
-            Collection<Item> nearDrops = location.getWorld().getNearbyEntitiesByType(Item.class,
-                    location,
-                    Settings.PICKUPS_MERGE_RADIUS,
-                    Settings.PICKUPS_MERGE_RADIUS,
-                    Settings.PICKUPS_MERGE_RADIUS);
+            float otherMoney = Main.inst.getMoneyFromPickup(drop.getItemStack());
+            if (otherMoney == -1)
+                continue;
 
-            int count = 0;
-            for (Item drop : nearDrops)
-            {
-                float otherMoney = Main.inst.getMoneyFromPickup(drop.getItemStack());
-                if (otherMoney == -1)
-                    continue;
-                money += otherMoney;
-                count++;
+            money += otherMoney;
+            count++;
+
+            // REMOVE the old money entity
+            drop.remove();
             }
 
-            if (count >= Settings.PICKUPS_MERGE_MIN_PICKUPS)
-            {
-                nearDrops.forEach(Entity::remove);
-                return Utils.round(money, 2);
-            }
-        }
+        // If we merged enough pickups, return merged value
+        if (count >= Settings.PICKUPS_MERGE_MIN_PICKUPS)
+            return Utils.round(money, 2);
 
         return money;
     }
+
+
 
     @Nullable
     public static Item spawnMoney(Entity player, float money, Location location)

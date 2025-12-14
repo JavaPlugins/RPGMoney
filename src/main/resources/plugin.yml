@@ -8,7 +8,7 @@ depend:
 softdepend:
   - ItemsAdder
 libraries:
-  - beer.devs:FastNbt-jar:1.4.2
+  - beer.devs:FastNbt-jar:1.4.15
   - net.kyori:adventure-api:4.18.0
   - net.kyori:adventure-text-serializer-gson:4.18.0
   - net.kyori:adventure-text-serializer-gson-legacy-impl:4.18.0

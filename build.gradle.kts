@@ -38,10 +38,10 @@ dependencies {
     compileOnlyApi("dev.lone:api-itemsadder:4.0.2-beta-release-11")
     compileOnlyApi("net.kyori:adventure-text-serializer-legacy:4.18.0")
     compileOnlyApi("net.kyori:adventure-platform-bukkit:4.3.4")
-    compileOnlyApi("beer.devs:FastNbt-jar:1.4.2")
+    compileOnlyApi("beer.devs:FastNbt-jar:1.4.15")
     compileOnlyApi("commons-io:commons-io:2.18.0")
 
-    implementation("de.tr7zw:item-nbt-api:2.14.1")
+    implementation("de.tr7zw:item-nbt-api:2.15.3")
 
     compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
         exclude(group = "org.bukkit", module = "bukkit")
