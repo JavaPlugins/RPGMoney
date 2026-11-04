@@ -2,6 +2,7 @@ package beer.devs.rpgmoney.utils;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.Ageable;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -91,19 +92,15 @@ public class Utils
         return name.replace("&", "\u00a7");
     }
 
-    @SuppressWarnings("removal")
     public static boolean isFullyGrown(Block block)
     {
-        org.bukkit.material.MaterialData md = block.getState().getData();
-        if (md instanceof org.bukkit.material.Crops)
-            return (((org.bukkit.material.Crops) md).getState() == org.bukkit.CropState.RIPE);
-        return true;
+        return !(block.getBlockData() instanceof Ageable crop)
+                || crop.getAge() == crop.getMaximumAge();
     }
 
-    @SuppressWarnings("removal")
     public static boolean isGrowable(Block block)
     {
-        return (block.getState().getData() instanceof org.bukkit.material.Crops);
+        return block.getBlockData() instanceof Ageable;
     }
 
     public static boolean isVanished(Player player)

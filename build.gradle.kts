@@ -1,10 +1,9 @@
 group = "beer.devs.rpgmoney"
-version = "1.3.1"
+version = "1.4.0"
 
 plugins {
     `java-library`
     id("com.gradleup.shadow") version "8.3.6"
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.14"
 }
 
 java {
@@ -17,14 +16,6 @@ repositories {
 
     maven("https://repo.papermc.io/repository/maven-public/")
 
-    maven {
-        name = "sonatype"
-        url = uri("https://oss.sonatype.org/content/groups/public/")
-    }
-    maven {
-        name = "lonedev"
-        url = uri("https://maven.devs.beer/")
-    }
     maven(url = "https://jitpack.io")
     maven {
         name = "CodeMC"
@@ -33,19 +24,28 @@ repositories {
 }
 
 dependencies {
-    paperweight.paperDevBundle("1.21.4-R0.1-SNAPSHOT")
+    // Only public APIs are used; a server development bundle is unnecessary.
+    compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
 
-    compileOnlyApi("dev.lone:api-itemsadder:4.0.2-beta-release-11")
-    compileOnlyApi("net.kyori:adventure-text-serializer-legacy:4.18.0")
-    compileOnlyApi("net.kyori:adventure-platform-bukkit:4.3.4")
-    compileOnlyApi("beer.devs:FastNbt-jar:1.4.2")
-    compileOnlyApi("commons-io:commons-io:2.18.0")
+    compileOnly("beer.devs:itemsadder-api:4.0.17") {
+        isTransitive = false
+    }
+    implementation("commons-io:commons-io:2.18.0")
 
-    implementation("de.tr7zw:item-nbt-api:2.14.1")
+    implementation("de.tr7zw:item-nbt-api:2.16.1")
 
     compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
         exclude(group = "org.bukkit", module = "bukkit")
     }
+
+    testImplementation("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
+    testImplementation("org.mockito:mockito-core:5.15.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -64,14 +64,16 @@ tasks.shadowJar {
     archiveVersion.set("");
 
     relocate("de.tr7zw.changeme.nbtapi", "beer.devs.rpgmoney.shaded.nbtapi")
+    relocate("org.apache.commons.io", "beer.devs.rpgmoney.shaded.commonsio")
 
     exclude("META-INF/**")
 
-    finalizedBy("copyToServer")
 }
 
 tasks.register<Copy>("copyToServer") {
+    val serverPluginsDir = providers.gradleProperty("serverPluginsDir")
+    onlyIf { serverPluginsDir.isPresent }
     from(tasks.shadowJar)
-    into("C:\\Progetti\\Minecraft\\TestServer\\1.21.4\\plugins")
+    into(serverPluginsDir.orElse(layout.buildDirectory.dir("server-plugins").map { it.asFile.absolutePath }))
     rename { "RPGMoney.jar" }
 }

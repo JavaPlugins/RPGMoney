@@ -1,6 +1,5 @@
 package beer.devs.rpgmoney;
 
-import beer.devs.fastnbt.nms.Version;
 import beer.devs.rpgmoney.utils.*;
 import de.tr7zw.changeme.nbtapi.NBTItem;
 import dev.lone.itemsadder.api.ItemsAdder;
@@ -66,14 +65,6 @@ public final class Main extends JavaPlugin implements Listener
     public void onEnable()
     {
         inst = this;
-
-        if (Version.isOlderThan(Version.v1_20_5))
-        {
-            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "This plugin is not compatible with this version of Minecraft.");
-            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Please update your server to 1.20.5 or newer.");
-            Bukkit.getPluginManager().disablePlugin(this);
-            return;
-        }
 
         initConfig();
 

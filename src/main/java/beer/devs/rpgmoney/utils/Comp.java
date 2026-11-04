@@ -1,6 +1,5 @@
 package beer.devs.rpgmoney.utils;
 
-import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -14,6 +13,11 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 public class Comp
 {
     private static final MiniMessage MINIMESSAGE = MiniMessage.miniMessage();
+    private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.builder()
+            .character('\u00a7')
+            .hexColors()
+            .useUnusualXRepeatedCharacterHexFormat()
+            .build();
 
     /**
      * Equivalent of {@link Component#text(String)}} but supports also Spigot hex color notation.
@@ -24,7 +28,7 @@ public class Comp
      */
     public static Component text(String text)
     {
-        TextComponent component = BukkitComponentSerializer.legacy().deserialize(text);
+        TextComponent component = LEGACY.deserialize(text);
         if (component.style().hasDecoration(TextDecoration.ITALIC))
             return component;
         return component.style(builder -> {

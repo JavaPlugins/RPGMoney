@@ -1,12 +1,15 @@
 package beer.devs.rpgmoney.utils;
 
-import de.tr7zw.changeme.nbtapi.NBT;
-import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
+import com.destroystokyo.paper.profile.ProfileProperty;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.UUID;
 
 public class Heads
 {
@@ -18,12 +21,12 @@ public class Heads
     public static ItemStack get(String texture)
     {
         ItemStack item = newPlayerHead(1);
-        NBT.modifyComponents(item, (nbt) -> {
-            ReadWriteNBT profileNbt = nbt.getOrCreateCompound("minecraft:profile");
-            ReadWriteNBT propertiesNbt = profileNbt.getCompoundList("properties").addCompound();
-            propertiesNbt.setString("name", "textures");
-            propertiesNbt.setString("value", texture);
-        });
+        // Let Paper handle the profile component format for the running server.
+        var profile = Bukkit.createProfile(UUID.nameUUIDFromBytes(texture.getBytes(StandardCharsets.UTF_8)));
+        profile.setProperty(new ProfileProperty("textures", texture));
+        SkullMeta meta = (SkullMeta) item.getItemMeta();
+        meta.setPlayerProfile(profile);
+        item.setItemMeta(meta);
         return item;
     }
 
